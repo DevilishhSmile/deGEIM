@@ -8,10 +8,13 @@ public class ItemCollector : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI fruitsCountText;
 
+    [SerializeField] private AudioSource collectSoundEffect;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Fruit"))
         {
+            collectSoundEffect.Play(); 
             Destroy(collision.gameObject);
             fruits++;
             UpdateFruitsCountText();
